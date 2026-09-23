@@ -36,7 +36,7 @@ Whether hotel-specific models improve predictive performance is a hypothesis to 
 
 The project will investigate whether any dataset features directly reveal the cancellation outcome, become available only after relevant booking events, or would create unrealistic prediction performance. Feature availability will be assessed against a realistic prediction stage.
 
-Leakage-related decisions will be documented during EDA and preprocessing. No final column-removal list has been established.
+The leakage audit and primary-set preprocessing decisions are documented in [the feature audit](docs/feature_availability_audit.md) and [preprocessing policy](docs/preprocessing_policy.md). The raw dataset remains unchanged.
 
 ## Dataset
 
@@ -71,7 +71,7 @@ The current project phase includes:
 - Feature selection where appropriate.
 - Preparation of training/testing data.
 
-These activities define the planned Evaluation 1 scope; the repository is currently at the setup stage. Machine-learning model comparison belongs to the next project stage and is intentionally not part of the current implementation work.
+The Evaluation 1 analysis, leakage audit, preprocessing, feature engineering, and reproducible training/testing preparation are complete. Machine-learning model development and comparison are the next stage and have not been performed.
 
 ## Repository Structure
 
@@ -124,7 +124,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Place your local dataset copy at the path described above. When notebooks are added, open them using VS Code's Jupyter extension and select the `.venv` Python environment as the notebook kernel.
+Place your local dataset copy at the path described above. Open the notebooks using VS Code's Jupyter extension and select the `.venv` Python environment as the notebook kernel.
 
 ## Project Workflow
 
@@ -143,9 +143,11 @@ Problem Understanding
 → Final Prediction System
 ```
 
-Later workflow stages have not yet been completed.
+Model development, optimization, and the final prediction system remain future work.
 
 ## Current Status
 
-Evaluation 1 — Project Setup
+Evaluation 1 — EDA, leakage audit, preprocessing and feature engineering completed
+
+Model development is the next stage. The [preprocessing notebook](notebooks/05_preprocessing_feature_engineering.ipynb) validates a transformer fitted only on the training partition; no classifier has been trained. See [Evaluation 1 preprocessing findings](reports/eval1/preprocessing_findings.md) for record counts and validation evidence.
 
