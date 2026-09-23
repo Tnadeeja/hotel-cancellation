@@ -1,6 +1,45 @@
 __pycache__/
 *.py[cod]
+*$py.class
+
+# Python build outputs and caches
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Virtual environments and local configuration
 .venv/
 venv/
+env/
 .env
+.vscode/
+
+# Operating-system and temporary files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Generated models
+*.pkl
+*.joblib
+
+# Local datasets and generated figures
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+reports/figures/*
+!reports/figures/.gitkeep
