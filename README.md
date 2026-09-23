@@ -84,13 +84,28 @@ hotel-cancellation/
 │   ├── raw/          # Local original dataset.
 │   └── processed/    # Processed datasets generated later.
 ├── notebooks/        # Data understanding, EDA, and preprocessing notebooks.
+│   ├── 01_data_understanding.ipynb
+│   ├── 02_data_quality_audit.ipynb
+│   ├── 03_exploratory_data_analysis.ipynb
+│   ├── 04_leakage_audit.ipynb
+│   └── 05_preprocessing_feature_engineering.ipynb
 ├── src/              # Reusable Python code.
-│   └── __init__.py
+│   ├── __init__.py
+│   └── preprocessing.py
 ├── reports/
 │   ├── figures/      # Generated EDA figures.
 │   └── eval1/        # Evaluation 1 observations and preparation material.
+│       ├── data_quality_findings.md
+│       ├── eda_findings.md
+│       ├── leakage_findings.md
+│       ├── preprocessing_findings.md
+│       └── evaluation1_summary.md
 └── docs/             # Project documentation including the data dictionary.
-    └── data_dictionary.md
+    ├── data_dictionary.md
+    ├── feature_availability_audit.md
+    ├── preprocessing_policy.md
+    ├── eval1_viva_guide.md
+    └── eval1_contribution_record.md
 ```
 
 Local datasets and generated figures are ignored by Git; `.gitkeep` files preserve otherwise empty directories.
