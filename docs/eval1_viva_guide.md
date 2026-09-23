@@ -254,7 +254,7 @@ That material change was one reason full deduplication was not used for the prim
 
 **Short viva answer**
 
-A row with known adults, children, and babies summing to zero is definitively inconsistent with a booking containing guests.
+A reservation with a known total of zero guests is not a meaningful input case for our intended cancellation-prediction system, so we removed those 180 records.
 
 **If lecturer asks deeper**
 

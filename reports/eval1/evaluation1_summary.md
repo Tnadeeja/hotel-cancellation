@@ -134,7 +134,7 @@ The following timing-sensitive or identifier-like fields are retained in the pri
 
 ## 8. Row-Level Preprocessing
 
-Duplicate-looking records are retained because no booking ID proves their identity. Full deduplication would change the observed cancellation rate from 37.042% to 27.490%, so it was rejected for the primary modelling population.
+Duplicate-looking records are retained because no booking ID proves their identity. Duplicate-looking records were retained because no booking ID allows us to establish whether they are accidental copies or separate reservations. As additional evidence that blanket deduplication could materially alter the observed population, full-row deduplication would change the cancellation rate from 37.042% to 27.490%.
 
 Only 180 definite zero-guest rows were removed. The final modelling population contains 119,210 records.
 
