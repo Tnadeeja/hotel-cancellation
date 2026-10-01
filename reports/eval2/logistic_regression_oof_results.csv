@@ -1,0 +1,6 @@
+algorithm,scope,evaluation_population,stage,rows,accuracy,precision,recall,f1,roc_auc,parameters
+Logistic Regression,General,Overall,tuned_oof,95375,0.8176251638269987,0.7350056237085087,0.7946158414161695,0.7636492105334673,0.9043523784945053,"{""classifier__C"": 0.1, ""classifier__class_weight"": ""balanced""}"
+Logistic Regression,General,City,tuned_oof,63044,0.8059767781232156,0.7459222961148058,0.8107974433115204,0.7770080577533088,0.8993847033756494,"{""classifier__C"": 0.1, ""classifier__class_weight"": ""balanced""}"
+Logistic Regression,General,Resort,tuned_oof,32331,0.8403389935356159,0.7027222854776938,0.7477695781473731,0.724546424759872,0.9086391705303223,"{""classifier__C"": 0.1, ""classifier__class_weight"": ""balanced""}"
+Logistic Regression,City,City,tuned_oof,63044,0.8129877545841,0.7752164666565395,0.7766321716633694,0.7759236734073286,0.8987373404036166,"{""classifier__C"": 1.0, ""classifier__class_weight"": ""balanced""}"
+Logistic Regression,Resort,Resort,tuned_oof,32331,0.8341839101790851,0.6580513518109166,0.8525167970040753,0.7427666618684324,0.9134722178036714,"{""classifier__C"": 0.1, ""classifier__class_weight"": ""balanced""}"
