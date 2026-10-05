@@ -11,3 +11,4 @@ pydantic>=2,<3
 pytest
 httpx
 joblib
+streamlit
