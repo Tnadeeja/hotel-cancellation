@@ -5,3 +5,9 @@ scipy==1.18.0
 scikit-learn==1.9.0
 jupyter
 ipykernel
+fastapi
+uvicorn
+pydantic>=2,<3
+pytest
+httpx
+joblib
