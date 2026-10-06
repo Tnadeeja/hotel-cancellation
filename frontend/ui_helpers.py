@@ -1,5 +1,8 @@
 """Request serialization and HTTP handling; no model or preprocessing access."""
+import base64
 from datetime import date
+from functools import lru_cache
+from pathlib import Path
 from typing import get_args
 
 import httpx
@@ -77,3 +80,47 @@ def backend_connected(backend_url: str) -> bool:
         return response.status_code == 200 and result.get("model_loaded") is True and result.get("status") == "ok"
     except (httpx.RequestError, ValueError, AttributeError):
         return False
+
+
+# Shared presentation stays separate from HTTP and payload helpers above.
+@lru_cache(maxsize=1)
+def brand_mark() -> str:
+    """Embed the project logo once so Streamlit can render it inside the shell."""
+    logo_path = Path(__file__).with_name("assets") / "hotel-cancellation-logo.png"
+    encoded = base64.b64encode(logo_path.read_bytes()).decode("ascii")
+    return (
+        '<span class="brand-mark" aria-hidden="true">'
+        f'<img src="data:image/png;base64,{encoded}" alt="">'
+        "</span>"
+    )
+
+
+def render_header(page_title):
+    import streamlit as st
+    from html import escape
+    status = st.session_state.get("backend_connected")
+    label = "Connected" if status is True else "Service unavailable" if status is False else "Connection not checked"
+    dot = "connected" if status is True else "unavailable" if status is False else "unchecked"
+    st.html(f'<header class="brand"><div class="brand-lockup">{brand_mark()}<strong>Hotel Risk Intelligence</strong></div><span class="page-indicator">{escape(page_title)}</span><span class="service-status {dot}">{label}</span></header>')
+
+
+def render_sidebar():
+    import os
+    import streamlit as st
+    with st.sidebar:
+        if st.button("Predict Cancellation Risk", type="primary", width="stretch", key="sidebar_predict"):
+            st.switch_page("app_pages/prediction.py")
+        if st.button("Check service connection", icon=":material/sync:", key="check_connection"):
+            st.session_state["backend_connected"] = backend_connected(os.environ.get("BACKEND_URL", "http://127.0.0.1:8000"))
+        status = st.session_state.get("backend_connected")
+        if status is True:
+            st.caption("Prediction service connected")
+        elif status is False:
+            st.caption("Prediction service unavailable. Check that the backend is running, then try again.")
+        else:
+            st.caption("Check the service when you are ready.")
+
+
+def render_footer():
+    import streamlit as st
+    st.html(f'<footer class="footer"><div>{brand_mark()}<strong> Hotel Risk Intelligence</strong><p>Decision-support system for hotel booking cancellation risk</p></div><div><p>Streamlit · FastAPI · Scikit-learn · Random Forest</p><span>2026 · Built for IT3051 FDM Mini Project</span></div></footer>')
